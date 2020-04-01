@@ -1,4 +1,4 @@
-# elfer: implementing the Evaluative Linguistic Framework for Questionnaires in R
+# elfr: implementing the Evaluative Linguistic Framework for Questionnaires in R
 
-`elfer` is an R package that implements some of the calculations from
+`elfr` is an R package that implements some of the calculations from
 the Evaluative Linguistic Framework for Questionnaires (ELF-Q).
