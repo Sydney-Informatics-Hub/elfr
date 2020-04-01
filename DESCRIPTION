@@ -15,3 +15,7 @@ Imports:
     tibble,
     dplyr,
     udpipe
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
