@@ -1,6 +1,6 @@
 #' Get part of speech tags
 #'
-#' @param texts: vector of character strings
+#' @param texts vector of character strings
 #'
 #' @return
 #' @export
