@@ -85,4 +85,4 @@ This returns a "long" format dataframe with one row per token.
   [Penn Treebank tagset](https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html):
   these are not used in the calculations but may be useful for providing more details.
 * The `pos_type` column categorises the parts of speech as either `"Content"` or `"Function"`
-  words.
+  words. Tokens that are neither function nor content words will have a missing value, `NA`.
