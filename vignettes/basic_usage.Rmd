@@ -1,0 +1,88 @@
+---
+title: "Basic usage"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Basic usage}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+df_print: "kable"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Details
+
+`elfr` uses the `udpipe` package for R to perform part-of-speech tagging.
+
+## Setup
+
+To use `elfr`, first load the library into your R session:
+
+```{r setup}
+library(elfr)
+library(knitr)
+```
+
+## Calculating lexical density
+
+To calculate lexical density, you can use the `elf_summary_stats()` function.
+The input is a character vector, with each element representing a
+question or text.
+
+Here we apply it to 3 sample questions:
+
+```{r example_data}
+sample_qs <- c(
+    "On a scale from very difficult to very easy, how easy would you say it is to use information the doctor gives you to make decisions about your illness.",
+    "On a scale from very difficult to very easy, how easy would you say it is to find information about how to manage unhealthy behaviour such as smoking, low physical activity and drinking too much.",
+    "On a scale from very difficult to very easy, how easy would you say it is to find information about vaccinations and health screening that you should have."
+)
+
+density_stats <- elf_summary_stats(sample_qs)
+# Dropping the text column, which contains the original input
+kable(density_stats[, - 1])
+```
+
+The output is a dataframe, with one row per text, and variables:
+
+* `n_words`: the number of words in the text, including only content and function words
+* `n_content`: the number of content words
+* `n_function`: the number of function words
+* `n_clauses`: the number of clauses (this is approximate, based on the number of non-auxiliary verbs)
+* `prop_content`: the proportion of content words
+* `prop_function`: the proportion of function words
+* `simple_density`: the approximate lexical density as implemented in Moroney (2018): the
+  proportion of content words multiplied by 10
+* `lexical_density`: the lexical density, the number of content words divided by the number
+  of clauses.
+  
+### Additional information
+
+To get more information about the texts, you can see the tags generated
+by the part-of-speech tagger with `get_pos_tags()`:
+
+```{r get_pos_tags_example}
+pos_tags <- get_pos_tags(sample_qs)
+# Select the first 10 rows and the most useful columns
+kable(
+  pos_tags[1:10, 
+           c("doc_id", "sentence_id", "token_id", "token", 
+             "upos", "xpos", "pos_type")]
+)
+```
+
+This returns a "long" format dataframe with one row per token. 
+
+* The `upos` column contains the 
+  [Universal part of speech tag](https://universaldependencies.org/u/pos/all.html)
+  we use to classify function vs. content words. 
+* The `xpos` column contains an alternate set of tags that uses the 
+  [Penn Treebank tagset](https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html):
+  these are not used in the calculations but may be useful for providing more details.
+* The `pos_type` column categorises the parts of speech as either `"Content"` or `"Function"`
+  words.
