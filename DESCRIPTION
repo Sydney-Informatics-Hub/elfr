@@ -1,4 +1,4 @@
-Package: elfer
+Package: elfr
 Type: Package
 Title: Implementing Evaluative Linguistic Framework for Questionnaires in R
 Version: 0.1.0
