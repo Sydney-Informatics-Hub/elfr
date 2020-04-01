@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-get_summary_stats <- function(texts) {
+elf_summary_stats <- function(texts) {
     pos_tags <- get_pos_tags(texts)
 
     pos_tags %>%
@@ -20,11 +20,12 @@ get_summary_stats <- function(texts) {
             n_clauses = sum(upos == "VERB"),
             prop_content = n_content / n_words,
             prop_function = n_function / n_words,
-            simple_density = n_content / n_words,
+            # Multiply by 10 to approximate lexical density
+            simple_density = prop_content * 10,
             lexical_density = n_content / n_clauses
         ) %>%
         # Make sure we ungroup
         dplyr::ungroup() %>%
         dplyr::mutate(text = texts) %>%
-        select(text, everything(), - doc_id)
+        dplyr::select(text, everything(), - doc_id)
 }
