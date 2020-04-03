@@ -25,14 +25,17 @@ To use `elfr`, first load the library into your R session:
 
 ```{r setup}
 library(elfr)
+
+# Other packages we'll use in this session
 library(knitr)
+library(dplyr)
 ```
 
 ## Calculating lexical density
 
 To calculate lexical density, you can use the `elf_summary_stats()` function.
 The input is a character vector, with each element representing a
-question or text.
+question or text that summary statistics will be calculated for.
 
 Here we apply it to 3 sample questions:
 
@@ -44,8 +47,8 @@ sample_qs <- c(
 )
 
 density_stats <- elf_summary_stats(sample_qs)
-# Dropping the text column, which contains the original input
-kable(density_stats[, - 1])
+
+kable(density_stats %>% select(- text))
 ```
 
 The output is a dataframe, with one row per text, and variables:
@@ -70,9 +73,10 @@ by the part-of-speech tagger with `get_pos_tags()`:
 pos_tags <- get_pos_tags(sample_qs)
 # Select the first 10 rows and the most useful columns
 kable(
-  pos_tags[1:10, 
-           c("doc_id", "sentence_id", "token_id", "token", 
-             "upos", "xpos", "pos_type")]
+  pos_tags %>%
+    head(10) %>%
+    select(doc_id, sentence_id, token_id, token,
+           upos, xpos, pos_type)
 )
 ```
 
