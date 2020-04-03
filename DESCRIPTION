@@ -6,7 +6,7 @@ Author: Marius Mather
 Maintainer: Marius Mather <marius.mather@sydney.edu.au>
 Description: The ELF-Q aims to evaluate the literacy demands
     of self-report health literacy and quality of life questionnaires.
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
