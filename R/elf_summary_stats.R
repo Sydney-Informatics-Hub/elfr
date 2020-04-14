@@ -6,8 +6,14 @@
 #' @export
 #'
 #' @examples
-elf_summary_stats <- function(texts) {
-    pos_tags <- get_pos_tags(texts)
+elf_summary_stats <- function(texts, parser = "udpipe") {
+    parser <- match.arg(parser, c("udpipe", "spacy"))
+
+    pos_tags <- switch(
+        parser,
+        udpipe = get_pos_tags(texts),
+        spacy = get_spacy_tags(texts)
+    )
 
     pos_tags %>%
         dplyr::group_by(doc_id) %>%
