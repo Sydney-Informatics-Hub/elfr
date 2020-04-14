@@ -14,7 +14,8 @@ Imports:
     magrittr,
     tibble,
     dplyr,
-    udpipe
+    udpipe,
+    spacyr
 Suggests: 
     knitr,
     rmarkdown
