@@ -3,4 +3,5 @@
 export("%>%")
 export(elf_summary_stats)
 export(get_pos_tags)
+export(get_spacy_tags)
 importFrom(magrittr,"%>%")
