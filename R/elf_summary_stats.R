@@ -1,8 +1,21 @@
 #' Title
 #'
 #' @param texts Vector of character strings
+#' @param parser Tool used to tag parts of speech in the text. One of
+#'     "udpipe" or "spacy"
 #'
-#' @return
+#' @return Table of summary statistics for each text,
+#'     with columns
+#'
+#'     \itemize{
+#'         \item \code{n_words} Number of words
+#'         \item \code{n_content} Number of content words
+#'         \item \code{n_clauses} Number of clauses (estimated using number of verbs)
+#'         \item \code{prop_content} Proportion of content words (0.0 to 1.0)
+#'         \item \code{prop_function} Proportion of function words (0.0 to 1.0)
+#'         \item \code{simple_density} Approximate lexical density, \code{prop_content} * 10
+#'         \item \code{lexical_density} Lexical density, \code{prop_content} / \code{n_clauses}
+#'     }
 #' @export
 #'
 #' @examples
