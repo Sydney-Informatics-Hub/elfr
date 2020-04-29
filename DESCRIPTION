@@ -18,7 +18,9 @@ Imports:
     spacyr
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    readxl,
+    usethis
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
