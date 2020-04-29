@@ -19,6 +19,8 @@
 #' @export
 #'
 #' @examples
+#' elf_summary_stats(c("The quick brown fox jumped swiftly over the lazy dog.",
+#'                     "She told him that she loved him."))
 elf_summary_stats <- function(texts, parser = "udpipe") {
     parser <- match.arg(parser, c("udpipe", "spacy"))
 

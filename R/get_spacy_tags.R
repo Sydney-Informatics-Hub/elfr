@@ -2,10 +2,12 @@
 #'
 #' @param texts vector of character strings
 #'
-#' @return
+#' @return Dataframe with tags for each word/token in the texts
 #' @export
 #'
 #' @examples
+#' get_spacy_tags(c("The quick brown fox jumped swiftly over the lazy dog.",
+#'                  "She told him that she loved him."))
 get_spacy_tags <- function(texts) {
     annotated <- spacyr::spacy_parse(texts, pos = TRUE, tag = TRUE, dependency = TRUE,
                                      entity = FALSE)
