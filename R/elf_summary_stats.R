@@ -48,5 +48,5 @@ elf_summary_stats <- function(texts, parser = "udpipe") {
         # Make sure we ungroup
         dplyr::ungroup() %>%
         dplyr::mutate(text = texts) %>%
-        dplyr::select(text, everything(), - doc_id)
+        dplyr::select(text, dplyr::everything(), - doc_id)
 }
