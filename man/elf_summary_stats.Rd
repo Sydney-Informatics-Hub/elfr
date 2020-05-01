@@ -2,7 +2,7 @@
 % Please edit documentation in R/elf_summary_stats.R
 \name{elf_summary_stats}
 \alias{elf_summary_stats}
-\title{Title}
+\title{Get Evaluative Linguistic Framework statistics for texts}
 \usage{
 elf_summary_stats(texts, parser = "udpipe")
 }
@@ -27,7 +27,7 @@ Table of summary statistics for each text,
     }
 }
 \description{
-Title
+Get Evaluative Linguistic Framework statistics for texts
 }
 \examples{
 elf_summary_stats(c("The quick brown fox jumped swiftly over the lazy dog.",

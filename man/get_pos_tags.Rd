@@ -4,10 +4,13 @@
 \alias{get_pos_tags}
 \title{Get part of speech tags}
 \usage{
-get_pos_tags(texts)
+get_pos_tags(texts, parser = "udpipe")
 }
 \arguments{
 \item{texts}{vector of character strings}
+
+\item{parser}{One of \code{"udpipe"} or \code{"spacy"}. The udpipe tagger is
+used by default}
 }
 \value{
 Dataframe with tags for each word in the texts

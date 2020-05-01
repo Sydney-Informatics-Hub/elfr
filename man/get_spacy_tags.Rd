@@ -10,12 +10,8 @@ get_spacy_tags(texts)
 \item{texts}{vector of character strings}
 }
 \value{
-Dataframe with tags for each word/token in the texts
+tibble with tags for each word/token in the texts
 }
 \description{
 Get part of speech tags using spacy
-}
-\examples{
-get_spacy_tags(c("The quick brown fox jumped swiftly over the lazy dog.",
-                 "She told him that she loved him."))
 }

@@ -3,7 +3,6 @@
 #' A dataset mapping the tags produced by the POS taggers to
 #' either content or function words
 #'
-#'
 #' @format A data frame with 17 rows and 3 variables:
 #' \describe{
 #'   \item{Tag}{Part of speech tag}
