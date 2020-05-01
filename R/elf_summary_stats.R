@@ -1,4 +1,6 @@
-#' Title
+#' Get Evaluative Linguistic Framework statistics for texts
+#'
+#' @importFrom rlang .data
 #'
 #' @param texts Vector of character strings
 #' @param parser Tool used to tag parts of speech in the text. One of
@@ -24,29 +26,25 @@
 elf_summary_stats <- function(texts, parser = "udpipe") {
     parser <- match.arg(parser, c("udpipe", "spacy"))
 
-    pos_tags <- switch(
-        parser,
-        udpipe = get_pos_tags(texts),
-        spacy = get_spacy_tags(texts)
-    )
+    pos_tags <- get_pos_tags(texts, parser = parser)
 
     pos_tags %>%
-        dplyr::group_by(doc_id) %>%
+        dplyr::group_by(.data$doc_id) %>%
         dplyr::summarise(
             # Number of words for the purpose of counting lexical density,
             #   i.e. any word that we can tag as content/function
-            n_words = sum(! is.na(pos_type)),
-            n_content = sum(pos_type == "Content", na.rm = TRUE),
-            n_function = sum(pos_type == "Function", na.rm = TRUE),
-            n_clauses = sum(upos == "VERB"),
-            prop_content = n_content / n_words,
-            prop_function = n_function / n_words,
+            n_words = sum(! is.na(.data$pos_type)),
+            n_content = sum(.data$pos_type == "Content", na.rm = TRUE),
+            n_function = sum(.data$pos_type == "Function", na.rm = TRUE),
+            n_clauses = sum(.data$upos == "VERB"),
+            prop_content = .data$n_content / .data$n_words,
+            prop_function = .data$n_function / .data$n_words,
             # Multiply by 10 to approximate lexical density
-            simple_density = prop_content * 10,
-            lexical_density = n_content / n_clauses
+            simple_density = .data$prop_content * 10,
+            lexical_density = .data$n_content / .data$n_clauses
         ) %>%
         # Make sure we ungroup
         dplyr::ungroup() %>%
         dplyr::mutate(text = texts) %>%
-        dplyr::select(text, dplyr::everything(), - doc_id)
+        dplyr::select(.data$text, dplyr::everything(), - .data$doc_id)
 }

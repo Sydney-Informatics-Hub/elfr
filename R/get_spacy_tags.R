@@ -2,12 +2,7 @@
 #'
 #' @param texts vector of character strings
 #'
-#' @return Dataframe with tags for each word/token in the texts
-#' @export
-#'
-#' @examples
-#' get_spacy_tags(c("The quick brown fox jumped swiftly over the lazy dog.",
-#'                  "She told him that she loved him."))
+#' @return tibble with tags for each word/token in the texts
 get_spacy_tags <- function(texts) {
     annotated <- spacyr::spacy_parse(texts, pos = TRUE, tag = TRUE, dependency = TRUE,
                                      entity = FALSE)
@@ -15,8 +10,7 @@ get_spacy_tags <- function(texts) {
     annotated <- annotated %>%
         tibble::as_tibble() %>%
         # Rename for consistency with udpipe output
-        dplyr::rename(upos = pos) %>%
-        dplyr::mutate(pos_type = get_pos_type(upos))
+        dplyr::rename(upos = pos)
 
     annotated
 }
