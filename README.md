@@ -17,7 +17,7 @@ in your R console
 Then you should be able to install the `elfr` package using:
 
 ```r
-remotes::install_github("Sydney-Informatics-Hub/elfr")
+remotes::install_github("Sydney-Informatics-Hub/elfr", build_vignettes = TRUE)
 ```
 
 ## Loading and using the library
@@ -31,8 +31,13 @@ library(elfr)
 elf_summary_stats("The quick brown fox jumped over the lazy dog")
 ```
 
-See the "Basic usage" vignette for more information. The functions
-should also have basic help pages available via `?elf_summary_stats`.
+See the "Basic usage" vignette for more information:
+
+```r
+vignette("basic_usage", package = 'elfr')
+```
+
+The functions should also have help pages available via `?elf_summary_stats`.
 
 ### Note on the spacy parser
 
