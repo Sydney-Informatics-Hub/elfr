@@ -35,7 +35,9 @@ library(dplyr)
 
 To calculate lexical density, you can use the `elf_summary_stats()` function.
 The input is a character vector, with each element representing a
-question or text that summary statistics will be calculated for.
+question or text that summary statistics will be calculated for. Each
+element of the character vector can be long - it might be a whole
+document that you want to analyse.
 
 Here we apply it to 3 sample questions:
 
