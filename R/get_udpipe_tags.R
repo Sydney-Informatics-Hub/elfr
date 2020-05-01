@@ -7,5 +7,5 @@ get_udpipe_tags <- function(texts) {
     tagger <- load_tagger()
     annotated <- udpipe::udpipe_annotate(tagger, texts)
 
-    as_tibble(annotated)
+    dplyr::as_tibble(annotated)
 }
