@@ -3,6 +3,9 @@
 `elfr` is an R package that implements some of the calculations from
 the Evaluative Linguistic Framework for Questionnaires (ELF-Q).
 
+This page has a quick guide to installing and using the package,
+you can find more documentation at <https://github.com/Sydney-Informatics-Hub/elfr/>
+
 ## Installation
 
 `elfr` is set up as an R package. To install `elfr`, first install the
