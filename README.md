@@ -4,7 +4,7 @@
 the Evaluative Linguistic Framework for Questionnaires (ELF-Q).
 
 This page has a quick guide to installing and using the package,
-you can find more documentation at <https://github.com/Sydney-Informatics-Hub/elfr/>
+you can find more documentation at <https://sydney-informatics-hub.github.io/elfr/>
 
 ## Installation
 
