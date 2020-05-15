@@ -19,7 +19,9 @@ Table of summary statistics for each text,
     \itemize{
         \item \code{n_words} Number of words
         \item \code{n_content} Number of content words
-        \item \code{n_clauses} Number of clauses (estimated using number of verbs)
+        \item \code{n_clauses} Number of clauses (estimated using number of non-auxiliary verbs).
+           Part-of-speech tagging is imperfect, and may not identify verbs in all cases, so
+           we assume a minimum of 1 clause per sentence even when no verbs are identified.
         \item \code{prop_content} Proportion of content words (0.0 to 1.0)
         \item \code{prop_function} Proportion of function words (0.0 to 1.0)
         \item \code{simple_density} Approximate lexical density, \code{prop_content} * 10
